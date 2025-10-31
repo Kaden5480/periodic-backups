@@ -89,6 +89,10 @@ class Backup:
 
         for local in self.locals:
             for source in self.sources:
+                if os.path.exists(source) is False:
+                    print(f"{source} doesn't exist, not backing up")
+                    continue
+
                 self.backup(source, local)
 
     def backup_remotes(self) -> None:
@@ -98,6 +102,10 @@ class Backup:
 
         for remote in self.remotes:
             for source in self.sources:
+                if os.path.exists(source) is False:
+                    print(f"{source} doesn't exist, not backing up")
+                    continue
+
                 self.backup(source, f"{remote.name}:{remote.backup_dir}")
 
     def run(self) -> None:
