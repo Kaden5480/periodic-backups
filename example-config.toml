@@ -1,0 +1,32 @@
+### Mode can be "copy" or "sync"
+### This corresponds to the "copy" and "sync" commands
+### in rclone
+### If no mode is specified, sync will be the default
+#rclone.mode = "copy"
+rclone.mode = "sync"
+
+### Whether to show progress
+rclone.progress = true
+
+### These files/directories will be backed up
+sources = [
+    "/home/user/sources/",
+]
+
+### The sources will be copied to any local paths
+### specified here
+local.backup_dirs = [
+    "/home/user/my-backups/dest/",
+]
+
+### The name of the remote will be passed to
+### rclone by default, in this case "google"
+[remote.google]
+backup_dir = "/backups/"
+
+### Or you can specify the name of the remote
+### yourself if needed, in this case "msbackup" is
+### passed to rclone
+[remote.onedrive]
+name = "msbackup"
+backup_dir = "/backups/"
